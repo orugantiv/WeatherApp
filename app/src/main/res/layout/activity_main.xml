@@ -19,8 +19,8 @@
 
     <TextView
         android:id="@+id/location"
-        android:layout_width="312dp"
-        android:layout_height="59dp"
+        android:layout_width="315dp"
+        android:layout_height="97dp"
         android:layout_marginTop="16dp"
         android:text="Location:"
         android:textAlignment="center"
