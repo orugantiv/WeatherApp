@@ -12,12 +12,13 @@ import com.google.android.gms.location.LocationServices
 class ObtainLocation(private val context: Context, private val activity: MainActivity) {
     private var fusedLocationClient = LocationServices.getFusedLocationProviderClient(activity)
 
-     var _latitude: Double = 0.0;
-     var _longitude: Double = 0.0;
+     var _latitude: Double = 100.555;
+     var _longitude: Double = 12.667;
     init {
         updateLocation()
     }
     fun updateLocation() {
+        Log.d("tes", "call loc")
         if (ActivityCompat.checkSelfPermission(
                 context,
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -39,6 +40,7 @@ class ObtainLocation(private val context: Context, private val activity: MainAct
                     Log.d("current", _latitude.toString())
                     _longitude = location!!.longitude
                 }
+
             }
     }
 
