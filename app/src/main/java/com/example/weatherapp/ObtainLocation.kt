@@ -10,9 +10,9 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 
 class ObtainLocation(private val context: Context, private val activity: MainActivity) {
-    private var fusedLocationClient = LocationServices.getFusedLocationProviderClient(activity)
+    private var fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
 
-     var _latitude: Double = 100.555;
+     var _latitude: Double = 10.555;
      var _longitude: Double = 12.667;
     init {
         updateLocation()
@@ -29,7 +29,7 @@ class ObtainLocation(private val context: Context, private val activity: MainAct
         ) {
             ActivityCompat.requestPermissions(
                 activity,
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION), 1
             )
 
         }

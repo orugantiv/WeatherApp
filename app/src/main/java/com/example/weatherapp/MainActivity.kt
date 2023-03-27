@@ -28,8 +28,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        location = ObtainLocation(this,this)
         var button: Button = findViewById(R.id.refresh_button)
 
         button.setOnClickListener {
@@ -58,11 +56,16 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onStart() {
         super.onStart()
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this@MainActivity)
+        location = ObtainLocation(this,this)
         getMyData();
     }
 
     private fun getMyData(){
+        location.updateLocation()
+
         val loc = location._latitude.toString()+ ","+ location._longitude.toString()
+        Log.d("Current Location: ",loc)
         val retrofitData= retrofitBuilder.getData(q=loc)
 
         retrofitData.enqueue(object : Callback<com.example.weatherapp.WeatherAppData.newAPI.weatherData?> {
